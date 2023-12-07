@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?PowerDesigner signature="Workspace" version="15.1.0.2850"?>
+<!-- Veuillez ne pas modifier ce fichier -->
+
+<Workspace>
+	<Local Expanded="Yes">
+		<Model Expanded="Yes" ID="{94BF5EE7-4BB0-4E0B-8131-AACC63A22DDE}" Name="GestionMCD" Type="{1E597170-9350-11D1-AB3C-0020AF71E433}" URL="GestionMCD.mcd"/>
+		<Model Expanded="Yes" ID="{A0ED26FB-ED90-4D7C-9238-3AB35B79161E}" Name="GestionMLD" Type="{5F45F978-C4F3-4E35-A3FC-AF3318663A0F}" URL="GestionMLD.mld"/>
+		<Model Expanded="Yes" ID="{B33F9024-FC16-4731-8506-90A8CEDAE379}" Name="GestionMPD" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="GestionMPD.mpd"/>
+	</Local>
+</Workspace>
