@@ -12,15 +12,17 @@
         $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         include('Manager.class.php');
+        include('FormManager.class.php');
 
-        $manager = new Manager($base)
+        $manager = new Manager($base);
+        $formateur = new FormManager($base);
     ?>
 
     <header>
         <h1>Ajouter un stagiaire en formation</h1>
     </header>
 
-    <body>
+    <main>
         <form action="ajouter.php">
             <label for="name">Nom : <input type="text" name="name"></label>
             <label for="firstname">Prenom : <input type="text" name="firstname"></label>
@@ -30,14 +32,28 @@
                 <option value="espagne">Espagne</option>
                 <option value="russie">Russie</option>
             </select></label>
-            <label for="formation">Type de formation : <select name="formation">
-                <option value="web designer">Web designer</option>
-                <option value="full stack developper">Fullstack developpeur</option>
-                <option value="UI designer">UI designer</option>
+            <label for="formation">Type de formation : <select id='changeFormation'>
+                <option value="Web designer" name="formation">Web designer</option>
+                <option value="Full stack developper" name="formation">Fullstack developpeur</option>
+                <option value="UI designer" name="formation">UI designer</option>
             </select></label>
             <label for="formateur">Formateurs par date : </label>
+            <?php 
+                $formateur->getAllForm()
+            ?>
 
         </form>
-    </body>
+</main>
+
+    <script>   
+        const changeFormation = document.getElementById('changeFormation');
+        changeFormation.addEventListener("change", (ev) => {
+            // <?php 
+            //     if (isset($_POST['formation'])) {
+            //           if ($_POST['formation'] === $_POST['yes']) {
+            // ?>
+
+        })
+    </script>
 </body>
 </html>
