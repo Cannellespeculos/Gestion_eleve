@@ -9,3 +9,7 @@ form {
     flex-direction: column;
     
 }
+
+option {
+    width: 30px;
+}

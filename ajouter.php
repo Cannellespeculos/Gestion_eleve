@@ -13,9 +13,11 @@
 
         include('Manager.class.php');
         include('FormManager.class.php');
+        include('formation.manager.class.php');
 
         $manager = new Manager($base);
         $formateur = new FormManager($base);
+        $formation = new Formation_manager($base)
     ?>
 
     <header>
@@ -23,36 +25,35 @@
     </header>
 
     <main>
-        <form action="ajouter.php">
+        <form action="add.php" method="POST">
             <label for="name">Nom : <input type="text" name="name"></label>
             <label for="firstname">Prenom : <input type="text" name="firstname"></label>
             <label for="nationalite">Nationalité : <select name="nationalite">
-                <option value="france">France</option>
-                <option value="allemagne">Allemagne</option>
-                <option value="espagne">Espagne</option>
-                <option value="russie">Russie</option>
+            <?php 
+                $manager->getAllNationalite();
+            ?>
             </select></label>
-            <label for="formation">Type de formation : <select id='changeFormation'>
-                <option value="Web designer" name="formation">Web designer</option>
-                <option value="Full stack developper" name="formation">Fullstack developpeur</option>
-                <option value="UI designer" name="formation">UI designer</option>
-            </select></label>
+            <label for="formation">Type de formation : </label>
+            <select id='changeFormation' name='formation'>
+            <?php 
+                $formation->getAllFormation();
+            ?>
+            </select>
             <label for="formateur">Formateurs par date : </label>
             <?php 
-                $formateur->getAllForm()
+                $formateur->getAllForm();
             ?>
-
+            <input type="submit" placeholder="envoyer">
         </form>
 </main>
 
-    <script>   
+    <script>
         const changeFormation = document.getElementById('changeFormation');
+        <?php echo 'const formation ='.$_POST['formation']; ?>
         changeFormation.addEventListener("change", (ev) => {
-            // <?php 
-            //     if (isset($_POST['formation'])) {
-            //           if ($_POST['formation'] === $_POST['yes']) {
-            // ?>
-
+            if (formation) {
+                console.log(formation)
+            }
         })
     </script>
 </body>

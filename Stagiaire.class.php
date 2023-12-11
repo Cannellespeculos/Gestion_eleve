@@ -3,8 +3,8 @@
         private $id;
         private $nom;
         private $prenom;
-        private $nation;
-        private $formation;
+        private $Idnation;
+        private $Idformation;
 
         function getId() {
             return $this->id;
@@ -26,21 +26,20 @@
             $this->prenom = $prenom;
         }
 
-
         function getNation() {
-            return $this->nation;
+            return $this->Idnation;
         }
 
-        function setNation($nation) {
-            $this->nation = $nation;
+        function setNation($nationid) {
+            $this->Idnation = $nationid;
         }
 
         function getFormation() {
-            return $this->formation;
+            return $this->Idformation;
         }
 
         function setFormation($formation) {
-            $this->formation = $formation;
+            $this->Idformation = $formation;
         }
     }
 ?>
