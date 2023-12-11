@@ -13,3 +13,7 @@ form {
 option {
     width: 30px;
 }
+
+td {
+    border: 2px solid black;
+}

@@ -11,11 +11,18 @@
             $j = $this->pdo->prepare($sql);
             $j->execute();
 
-            while ($row = $j->fetch()) {
-                echo '<label><input type="checkbox"></input> '.$row['PRENOM_FORMATEUR'].' '.$row['NOM_FORMATEUR'].' dans la salle '.$row['LIBELLE'].', début : <input type="date" name="debut"> , fin : <input type="date" name="fin"></label>';
-                echo '<input type="hidden" value='.$row['NOM_TYPE'].' name="yes">';
+            $rows = $j->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }
 
-            }
+
+        function getAForm() {
+            $sql = 'SELECT f.ID_FORMATEUR, formation.ID_TYPE FROM formateur f JOIN salle s ON f.ID_SALLE = s.ID_SALLE JOIN type_formateur formateur ON f.ID_FORMATEUR = formateur.ID_FORMATEUR JOIN type_formation formation ON formateur.ID_TYPE = formation.ID_TYPE';
+            $j = $this->pdo->prepare($sql);
+            $j->execute();
+
+            $rows = $j->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
         }
 
 

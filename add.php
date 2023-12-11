@@ -11,8 +11,10 @@
      $prenom = htmlspecialchars($_POST['firstname']);
      $stagiaire->setName($nom);
      $stagiaire->setFirstname($prenom);
-     $stagiaire->setNation($_POST('nationalite'));
-     $stagiaire->setFormation($_POST('formation'));
+     $stagiaire->setNation($_POST['nationalite']);
+     $stagiaire->setFormation($_POST['formation']);
 
-     $manager->setAll($stagiaire)
+     $manager->setAll($stagiaire);
+var_dump($_POST['formation']);
+     header('Location:ajouter.php');
 ?>

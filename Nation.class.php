@@ -1,5 +1,5 @@
 <?
-    class Nation extends Stagiaire {
+    class Nation {
 
         private $Idnation;
         private $nationalite;

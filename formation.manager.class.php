@@ -11,9 +11,8 @@
             $prepare = $this->pdo->prepare($sql);
             $prepare->execute();
 
-            while ($row = $prepare->fetch()) {
-                echo '<option value='.$row['ID_TYPE'].'>'.$row['NOM_TYPE'].'</option>';
-            }
+            $rows = $prepare->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
         }
     }
 ?>
