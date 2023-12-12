@@ -14,6 +14,7 @@
      $date_manage = new Date_manager($base);
 
      $rows = $manager->getA();
+     $tablForm = $formateur->getAllForm();
     
       
 ?>
@@ -54,13 +55,11 @@
                             }
 
 
-                            $tablForm = $formateur->getAllForm();
+
                             echo '<td>';
                             for ($i=0; $i < count($tablForm); $i++) { 
                                 $el = $tablForm[$i];
-                
                                 echo '<label><input type="checkbox" data-formateur='.$el['ID_FORMATEUR'].' name="formateur[' . $el["ID_FORMATEUR"].']" id='.$el['ID_FORMATEUR'].'></input> '.$el['PRENOM_FORMATEUR'].' '.$el['NOM_FORMATEUR'].' dans la salle '.$el['LIBELLE'].', début : <input type="date" name="debut['. $el["ID_FORMATEUR"].']"> , fin : <input type="date" name="fin['. $el["ID_FORMATEUR"] .']"></label><br />';
-                                echo '<input type="hidden" value='.$el['NOM_TYPE'].' name="yes" id="test">';
                             }
                             echo '</td>';
                               echo '<td><input type="checkbox" name="supprimer[]" value='.$element['ID_STAGIAIRE'].'></td>';
@@ -71,5 +70,27 @@
             </table>
         </form>
     </main>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+option {
+    width: 30px;
+}
+
+td , th{
+    border: 1px solid black;
+}
+    </style>
 </body>
 </html>

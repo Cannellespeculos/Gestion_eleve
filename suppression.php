@@ -6,7 +6,7 @@
      include('Date.manager.class.php');
 
      $manager = new Manager($base);
-     $date_manage = new Date_manager($base);
+
 if (isset($_POST['supprimer'])) {
     $f = $_POST['supprimer'];
     if (isset($_POST["submit"])) {
@@ -38,7 +38,6 @@ if (isset($_POST['supprimer'])) {
     <table>
         <?php
             $rows = $manager->getA();
-            $formrows = $date_manage->getFormation();
         echo '<thead>';
         echo '<tr>';
           $f = $rows[0];
