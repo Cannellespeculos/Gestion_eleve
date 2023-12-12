@@ -10,6 +10,8 @@
             $sql = 'INSERT INTO stagiaire(ID_NATION, ID_TYPE, NOM_STAGIAIRE, PRENOM_STAGIAIRE) VALUES (:id_nation, :id_type, :nom, :prenom)';
             $l = $this->pdo->prepare($sql);
             $l->execute(array("id_nation" => $stagiaire->getNation(), "id_type" => $stagiaire->getFormation(),"nom" => $stagiaire->getName(),"prenom" => $stagiaire->getFirstname()));
+
+            return $this->pdo->lastInsertId();
         }
         
 
@@ -31,8 +33,11 @@
             return $rows;
         }
 
-        function deleteStagiaire() {
-            
+        function deleteStagiaire($idstagiaire) {
+            $sql = "DELETE FROM stagiaire WHERE ID_STAGIAIRE = :id";
+            $k = $this->pdo->prepare($sql);
+            $k->execute(array("id" => $idstagiaire));
         }
+
     }
 ?>

@@ -56,7 +56,7 @@
             for ($i=0; $i < count($tablForm); $i++) { 
                 $element = $tablForm[$i];
 
-                echo '<label><input type="checkbox" data-formateur='.$element['ID_FORMATEUR'].' id='.$element['ID_FORMATEUR'].'></input> '.$element['PRENOM_FORMATEUR'].' '.$element['NOM_FORMATEUR'].' dans la salle '.$element['LIBELLE'].', début : <input type="date" name="debut"> , fin : <input type="date" name="fin"></label>';
+                echo '<label><input type="checkbox" data-formateur='.$element['ID_FORMATEUR'].' name="formateur[' . $element["ID_FORMATEUR"].']" id='.$element['ID_FORMATEUR'].'></input> '.$element['PRENOM_FORMATEUR'].' '.$element['NOM_FORMATEUR'].' dans la salle '.$element['LIBELLE'].', début : <input type="date" name="debut['. $element["ID_FORMATEUR"].']"> , fin : <input type="date" name="fin['. $element["ID_FORMATEUR"] .']"></label>';
                 echo '<input type="hidden" value='.$element['NOM_TYPE'].' name="yes" id="test">';
             }
             ?>
@@ -68,7 +68,6 @@
 
     <script>
         const changeFormation = document.getElementById('changeFormation');
-        const trainings = <?= json_encode($manager->getA()) ?>;
         const form = <?= json_encode($formateur->getAForm())?>;
         console.log(form)
         let formation = changeFormation.value;

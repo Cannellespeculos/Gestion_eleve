@@ -1,3 +1,27 @@
+<?php 
+     $base = new PDO('mysql:host=127.0.0.1;dbname=gestion', 'root', '');
+     $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+     include('Manager.class.php');
+     include('Date.manager.class.php');
+
+     $manager = new Manager($base);
+     $date_manage = new Date_manager($base);
+if (isset($_POST['supprimer'])) {
+    $f = $_POST['supprimer'];
+    if (isset($_POST["submit"])) {
+        for ($i=0; $i < count($f); $i++) { 
+            $suppr = $f[$i];
+            $manager->deleteStagiaire($suppr);
+            header('Location:suppression.php');
+        }
+        
+    }
+}
+   
+      
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,18 +31,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="suppression" method='POST'>
+    <form action="suppression.php" method='POST'>
     <?php 
-        $base = new PDO('mysql:host=127.0.0.1;dbname=gestion', 'root', '');
-        $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-        include('Manager.class.php');
-
-        $manager = new Manager($base);
+       
     ?>
     <table>
         <?php
             $rows = $manager->getA();
+            $formrows = $date_manage->getFormation();
         echo '<thead>';
         echo '<tr>';
           $f = $rows[0];
@@ -42,7 +62,7 @@
                     echo '<td>'.$value.'</td>';
                 }
             }
-
+           
               echo '<td><input type="checkbox" name="supprimer[]" value='.$element['ID_STAGIAIRE'].'></td>';
             echo '</tr>';
         }
@@ -52,15 +72,12 @@
         ?>
     </table>
 
-    <input type="submit" value="Envoyer">
+    <input type="submit" value="Envoyer" name="submit">
+    <a href="modify.php">modifier les stagiaires</a>
+
     </form>
 
-    <?php 
-    if (isset($_POST['supprimer'])) {
-        var_dump($_POST['supprimer']);
-    }
-      
-    ?>
+    
 
     <style>
         * {

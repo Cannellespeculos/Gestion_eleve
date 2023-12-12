@@ -10,7 +10,6 @@
             $sql = 'SELECT ID_TYPE, NOM_TYPE FROM type_formation';
             $prepare = $this->pdo->prepare($sql);
             $prepare->execute();
-
             $rows = $prepare->fetchAll(PDO::FETCH_ASSOC);
             return $rows;
         }
