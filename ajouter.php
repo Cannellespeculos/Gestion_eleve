@@ -13,9 +13,9 @@
     $base = new PDO('mysql:host=127.0.0.1;dbname=gestion', 'root', '');
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    include('Manager.class.php');
-    include('FormManager.class.php');
-    include('formation.manager.class.php');
+    include('class_Stagiaire/Manager.class.php');
+    include('class_Formateur/FormManager.class.php');
+    include('class_formation/formation.manager.class.php');
 
     $manager = new Manager($base);
     $formateur = new FormManager($base);
@@ -31,6 +31,7 @@
             <label for="name">Nom : <input type="text" name="name"></label>
             <label for="firstname">Prenom : <input type="text" name="firstname"></label>
             <label for="nationalite">Nationalité : <select name="nationalite">
+                <!-- affiche les nationalités dynamiquement -->
                     <?php
                     $tablNation = $manager->getAllNationalite();
                     for ($i=0; $i < count($tablNation); $i++) { 
@@ -41,6 +42,7 @@
                 </select></label>
             <label for="formation">Type de formation : </label>
             <select id='changeFormation' name='formation'>
+                <!-- affiche les formations dynamiquement -->
                 <?php
                 $tablTypes = $formation->getAllFormation();
                 for ($i=0; $i < count($tablTypes); $i++) { 
@@ -51,6 +53,7 @@
                 ?>
             </select>
             <label for="formateur">Formateurs par date : </label>
+            <!-- affiche les formateurs dynamiquement -->
             <?php
             $tablForm = $formateur->getAllForm();
             for ($i=0; $i < count($tablForm); $i++) { 
@@ -64,13 +67,24 @@
         </form>
 
         <a href="suppression.php">supprimer stagiaire</a>
+        <a href="modify.php">modifier les stagiaires</a>
     </main>
 
     <script>
+        // Pour verifier quelle formation a un formateur pour le desactiver selon la formation choisi par l'utilisateur
         const changeFormation = document.getElementById('changeFormation');
         const form = <?= json_encode($formateur->getAForm())?>;
         console.log(form)
         let formation = changeFormation.value;
+
+        for (let i = 0; i < form.length; i++) {
+                const element = form[i];
+                if (formation !== element.ID_TYPE) {
+                    document.getElementById(element.ID_FORMATEUR).disabled = true
+                }else {
+                    document.getElementById(element.ID_FORMATEUR).disabled = false
+                }
+            }
 
         console.log(formation);
         changeFormation.addEventListener("change", (ev) => {

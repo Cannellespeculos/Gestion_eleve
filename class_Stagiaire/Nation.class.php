@@ -1,4 +1,6 @@
 <?
+// Les informations de la table nationalite pour récuperer ou integrer des infos dedans
+
     class Nation {
 
         private $Idnation;

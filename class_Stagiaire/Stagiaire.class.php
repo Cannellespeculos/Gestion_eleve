@@ -1,4 +1,6 @@
 <?php
+// Les informations de la table stagiaire pour récuperer ou integrer des infos dedans
+
     class Stagiaire {
         private $id;
         private $nom;

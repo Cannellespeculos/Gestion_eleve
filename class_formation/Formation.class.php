@@ -1,4 +1,6 @@
 <?php 
+// Les informations de la table Formation pour récuperer ou integrer des infos dedans
+
     class Formation {
         private $id;
         private $nom_type;

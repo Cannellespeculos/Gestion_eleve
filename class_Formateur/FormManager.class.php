@@ -1,4 +1,5 @@
 <?php 
+// Les requêtes sql en lien avec la table formateur
     class FormManager {
         private $pdo;
 

@@ -1,4 +1,6 @@
 <?php 
+
+// Les informations de la table temps_formation pour récuperer ou integrer des infos dedans
     class Date {
 
         private $id_stagiaire;

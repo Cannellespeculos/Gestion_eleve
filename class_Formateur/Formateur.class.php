@@ -1,4 +1,6 @@
 <?php 
+// Les informations de la table formateur pour récuperer ou integrer des infos dedans
+
     class Formateur {
         private $id_formateur;
         private $nom;

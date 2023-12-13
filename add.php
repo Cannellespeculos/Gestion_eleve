@@ -1,17 +1,15 @@
 <?php
 var_dump($_POST);
-// crée ton stagiaire
-// récuperer son id
 
-
+     // Intègre les réponses du formulaire dans les objets pour ensuite les integrer dans la base de donnée 
      $base = new PDO('mysql:host=127.0.0.1;dbname=gestion', 'root', '');
      $base->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-     include('Manager.class.php');
-     include('Stagiaire.class.php');
-     include('Formateur.class.php');
-     include('Date.class.php');
-     include('Date.manager.class.php');
+     include('class_Stagiaire/Manager.class.php');
+     include('class_Stagiaire/Stagiaire.class.php');
+     include('class_Formateur/Formateur.class.php');
+     include('class_formation/Date.class.php');
+     include('class_Date/Date.manager.class.php');
 
      $manager = new Manager($base);
      $stagiaire = new Stagiaire();

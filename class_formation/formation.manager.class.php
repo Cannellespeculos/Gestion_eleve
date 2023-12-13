@@ -1,4 +1,6 @@
 <?php 
+
+    // Les requêtes sql en lien avec la table formation
     class Formation_manager {
         private $pdo;
 

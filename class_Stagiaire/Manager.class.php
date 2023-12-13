@@ -1,4 +1,6 @@
 <?php 
+
+// Les requêtes sql en lien avec la table Stagiaire
     class Manager {
         private $pdo;
 
@@ -25,7 +27,7 @@
         }
 
         function getA() {
-            $sql = 'SELECT ID_STAGIAIRE,NOM_STAGIAIRE, PRENOM_STAGIAIRE, NATIONALITE, NOM_TYPE FROM stagiaire s JOIN nationalite n ON s.ID_NATION = n.ID_NATION JOIN type_formation formation ON s.ID_TYPE = formation.ID_TYPE';
+            $sql = 'SELECT s.ID_STAGIAIRE,s.NOM_STAGIAIRE, s.PRENOM_STAGIAIRE, n.NATIONALITE, formation.NOM_TYPE FROM stagiaire s JOIN nationalite n ON s.ID_NATION = n.ID_NATION JOIN type_formation formation ON s.ID_TYPE = formation.ID_TYPE';
             $j = $this->pdo->prepare($sql);
             $j->execute();
 
